@@ -5,7 +5,7 @@ import "fmt"
 const pi float32 = 3.14
 
 func main() {
-	fmt.Println(pi)
+	defer fmt.Println(pi)
 	fmt.Println(test())
 	fmt.Println(test1())
 	s1, s2 := test()
@@ -14,8 +14,12 @@ func main() {
 	sum := 0
 	for i := 0; i < 10; i++ {
 		sum += i
+		if i == 7 {
+			fmt.Println(fmt.Sprintf("It is seven (%d)", i))
+		}
 	}
 	fmt.Println(sum)
+	fmt.Println(isTest(3))
 }
 
 func test() (a string, b string) {
@@ -26,4 +30,11 @@ func test() (a string, b string) {
 
 func test1() string {
 	return "My World"
+}
+
+func isTest(a int) (bool, int) {
+	if a == 2 {
+		return true, 1
+	}
+	return false, 2
 }
