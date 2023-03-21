@@ -5,6 +5,13 @@ import "fmt"
 func main() {
 	pointers()
 	structs()
+
+	p3 := Point{
+		X: 7,
+		Y: 9,
+		S: "hi",
+	}
+	p3.method1()
 }
 
 func pointers() {
@@ -29,12 +36,18 @@ func pointers() {
 type Point struct {
 	X int
 	Y int
+	S string
+}
+
+func (p Point) method1() {
+	fmt.Println(p.X, p.Y, p.S)
 }
 
 func structs() {
 	p1 := Point{
 		X: 1,
 		Y: 2,
+		S: "Point1",
 	}
 	fmt.Println(p1)
 	fmt.Println(p1.X)
@@ -45,4 +58,8 @@ func structs() {
 		X: 321,
 	}
 	fmt.Println(p2)
+
+	g := &p1
+	fmt.Println(g.X)
+
 }
